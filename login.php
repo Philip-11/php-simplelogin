@@ -18,6 +18,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             if ($ulevel == 1){
                 header('Location: admin.html');
             }
+            if ($ulevel == 2){
+                header('Location: users.html');
+            }
             else {
                 header('Location: login.html');
             }
