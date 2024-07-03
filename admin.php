@@ -3,7 +3,7 @@
 include "connect.php";
 
 $sql = "select * from users";
-$query = mysqli_query($con, $sql);
+$result = mysqli_query($con, $sql);
 
 ?>
 
@@ -37,11 +37,32 @@ $query = mysqli_query($con, $sql);
                     <thead>
                         <tr>
                             <th scope="col">ID</th>
-                            <th scope="col">Email</th>
+                            <th scope="col">User Level</th>
                             <th scope="col">First Name</th>
                             <th scope="col">Last Name</th>
+                            <th scope="col">Email</th>
                         </tr>
                     </thead>
+                    <?php 
+                    if (mysqli_num_rows($result) > 0){
+                        while($row = mysqli_fetch_assoc($result)) {
+                            echo "<tr>";
+                            echo "<td>" . $row["id"] . "</td>";
+                            echo "<td>" . $row["user_level"] . "</td>";
+                            echo "<td>" . $row["fname"] . "</td>";
+                            echo "<td>" . $row["lname"] . "</td>";
+                            echo "<td>" . $row["email"] . "</td>";
+                            echo "<td>";
+                            echo "<a href='#'" . $row["id"] . "'>Update</a> | ";
+                            echo "<a href='#'" . $row["id"] . "' onclick='return confirm (\"Are you sure?\")'>Delete</a>";
+                            echo "</td>";
+                            echo "</tr>";
+                        }
+                    } else {
+                        echo "<tr><td colspan='4'>No users found</td></tr>";
+                    }
+                    
+                    ?>
                 </table>
             </div>
         </div>
