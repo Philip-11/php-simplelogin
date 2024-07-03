@@ -16,7 +16,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         if ($password == $pass){
             if ($ulevel == 1){
-                header('Location: admin.html');
+                header('Location: admin.php');
             } elseif ($ulevel == 2){
                 header('Location: users.html');
             }
