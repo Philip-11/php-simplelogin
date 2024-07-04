@@ -2,6 +2,11 @@
 
 include "connect.php";
 
+if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true){
+    header("Location: login.html");
+    exit();
+}
+
 $sql = "select * from users";
 $result = mysqli_query($con, $sql);
 
@@ -20,6 +25,9 @@ $result = mysqli_query($con, $sql);
         <div class="row text-center">
             <div class="col">
                 <h1 class="display-1">Admin Dashboard</h1>
+            </div>
+            <div class="col">
+                <h3 class="display-3">Welcome, Admin <?php echo $_SESSION['username']?>!</h3>
             </div>
         </div>
 
