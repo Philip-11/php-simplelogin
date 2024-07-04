@@ -24,6 +24,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
             if ($user['user_level'] == 2) {
                 header("Location: users.php");
+                exit();
             }
         }
         else {
