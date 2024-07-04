@@ -10,29 +10,30 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     
     $sql = "select * from users where email = '$email'";
     $query = mysqli_query($con, $sql);
-    if ($row = mysqli_fetch_assoc($query)){
-        $pass = $row['password'];
-        $ulevel = $row['user_level'];
 
-        if ($password == $pass){
-            if ($ulevel == 1){
-                header('Location: admin.php');
-            } elseif ($ulevel == 2){
-                header('Location: users.html');
+    if (mysqli_num_rows($query) > 0){
+        $user = mysqli_fetch_assoc($query);
+        if ($password == $user["password"]){
+            $_SESSION['loggedin'] = true;
+            $_SESSION['username'] = $user['fname'];
+
+            if ($user['user_level'] == 1) {
+                header("Location: admin.php");
+                exit();
             }
-            else {
-                header('Location: login.html');
+
+            if ($user['user_level'] == 2) {
+                header("Location: users.php");
             }
-        }else {
-            header('Location: login.html');
         }
-    }else {
-        header('Location: login.html');
+        else {
+            echo "Wrong Password";
+        }
+    } else {
+        echo "No User Found";
     }
 }
 
-
-mysqli_close($con);
 
 
 
