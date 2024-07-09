@@ -61,8 +61,8 @@ $result = mysqli_query($con, $sql);
                             echo "<td>" . $row["lname"] . "</td>";
                             echo "<td>" . $row["email"] . "</td>";
                             echo "<td>";
-                            echo "<a href='#'" . $row["id"] . "'>Update</a> | ";
-                            echo "<a href='#'" . $row["id"] . "' onclick='return confirm (\"Are you sure?\")'>Delete</a>";
+                            echo "<a href='update.php?id=" . $row["id"] . "'>Update</a> | ";
+                            echo "<a href='delete.php?id=" . $row["id"] . "' onclick='return confirm (\"Are you sure?\")'>Delete</a>";
                             echo "</td>";
                             echo "</tr>";
                         }
