@@ -36,7 +36,7 @@ $result = mysqli_query($con, $sql);
                 <nav class="nav nav-pills flex-column mb-auto" style="width: 200px;">
                     <a href="#" class="nav-link active">Users</a>
                     <a href="#" class="nav-link">Account</a>
-
+                    <a href="logout.php" class="nav-link">Logout</a>
                 </nav>
             </div>
             
