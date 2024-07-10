@@ -8,18 +8,18 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true){
 }
 
 
-
+$id = $_GET['id'];
 
 
 if ($_SERVER['REQUEST_METHOD'] == "POST"){
-	$user_level = $_POST['changeUserLevel'];
+	//$user_level = $_POST['changeUserLevel'];
 	$fname = $_POST['changefname'];
 	$lname = $_POST['changelname'];
 	$password = $_POST['changePassword'];
 	$email = $_POST['changeEmail'];
 
 
-	$sql = "UPDATE users SET user_level='$user_level', fname='$fname', lname='$lname', password='$password', email='$email' WHERE id=$id";
+	$sql = "UPDATE users SET fname='$fname', lname='$lname', password='$password', email='$email' WHERE id=$id";
 
 	if (mysqli_query($con, $sql)) {
 		echo "Updated Successfully";
@@ -54,14 +54,14 @@ if ($_SERVER['REQUEST_METHOD'] == "POST"){
 		</div>
 
 		<form class="row g-3" method="post" action="">
-			<div class="col-md-12">
+			<!-- <div class="col-md-12">
 				<label class="form-label" for="changeUserLevel">User Level</label> <br>
 				<input type="radio" name="changeUserLevel" class="form-check-input" placeholder="User Level" id="1">
 				<label class="form-check-label" for="changeUserLevel">1</label> <br>
 				<input type="radio" name="changeUserLevel" class="form-check-input" placeholder="User Level" id="2">
 				<label class="form-check-label" for="changeUserLevel">2</label>
 
-			</div> 
+			</div>  -->
 			<div class="col-md-6">
 				<input type="email" name="changeEmail" class="form-control" placeholder="Email" id="changeEmail">
 			</div>
